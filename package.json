@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init-models": "npx sequelize-auto -h 127.0.0.1 -d cinema -u postgres -x root -e postgres --cm p -l esm --sg true -o ./src/db/models"
+    "init-db": "npx dotenv-cli -- bash -c 'npx sequelize-auto -h \"$DB_PG_HOST\" -p \"$DB_PG_PORT\" -d \"$DB_PG_NAME\" -u \"$DB_PG_USER\" -x \"$DB_PG_PWD\" -e postgres --cm p -l esm --sg true -o ./src/db/models'"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "sequelize-auto": "^0.8.8"
   },
   "devDependencies": {
+    "dotenv-cli": "^11.0.0",
     "sequelize-cli": "^6.6.5"
   }
 }
