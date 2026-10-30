@@ -4,14 +4,14 @@ const { Model, Sequelize } = _sequelize;
 export default class Genre extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    id: {
+    genre_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     title: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(100),
       allowNull: false,
       unique: "genres_title_key"
     },
@@ -29,7 +29,7 @@ export default class Genre extends Model {
         name: "genres_pkey",
         unique: true,
         fields: [
-          { name: "id" },
+          { name: "genre_id" },
         ]
       },
       {

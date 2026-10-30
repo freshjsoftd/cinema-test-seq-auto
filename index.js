@@ -5,7 +5,7 @@ import Serializer from 'sequelize-to-json'
 
 
 const models = Object.keys(db.sequelize.models)
-console.log(models)
+// console.log(models)
 
 async function getAllActors() {
 	try {
@@ -19,4 +19,4 @@ async function getAllActors() {
   }
 }
 
-// getAllActors();
+getAllActors();

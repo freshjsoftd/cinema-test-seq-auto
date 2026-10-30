@@ -4,7 +4,7 @@ const { Model, Sequelize } = _sequelize;
 export default class Studio extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    id: {
+    studio_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,16 +15,20 @@ export default class Studio extends Model {
       allowNull: false,
       unique: "studios_title_key"
     },
+    found_year: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
+    },
     logo: {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    locationid: {
+    location_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'locations',
-        key: 'id'
+        key: 'location_id'
       }
     }
   }, {
@@ -37,7 +41,7 @@ export default class Studio extends Model {
         name: "studios_pkey",
         unique: true,
         fields: [
-          { name: "id" },
+          { name: "studio_id" },
         ]
       },
       {

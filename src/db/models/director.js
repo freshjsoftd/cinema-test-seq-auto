@@ -4,16 +4,15 @@ const { Model, Sequelize } = _sequelize;
 export default class Director extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    id: {
+    director_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     full_name: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      unique: "directors_full_name_key"
+      type: DataTypes.STRING(100),
+      allowNull: false
     },
     birth_year: {
       type: DataTypes.DATEONLY,
@@ -23,16 +22,16 @@ export default class Director extends Model {
       type: DataTypes.DATEONLY,
       allowNull: true
     },
-    photo: {
+    foto: {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    countryid: {
+    nationality_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
-        model: 'countries',
-        key: 'id'
+        model: 'nationalities',
+        key: 'nationality_id'
       }
     }
   }, {
@@ -42,17 +41,10 @@ export default class Director extends Model {
     timestamps: false,
     indexes: [
       {
-        name: "directors_full_name_key",
-        unique: true,
-        fields: [
-          { name: "full_name" },
-        ]
-      },
-      {
         name: "directors_pkey",
         unique: true,
         fields: [
-          { name: "id" },
+          { name: "director_id" },
         ]
       },
     ]

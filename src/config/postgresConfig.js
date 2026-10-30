@@ -8,6 +8,8 @@ export default {
     host: process.env.DB_PG_HOST,
     port: process.env.DB_PG_PORT,
     dialect: 'postgres',
+    migrationStorage: 'json',
+    seedersStorage: 'json',
   },
   test: {},
   production: {},

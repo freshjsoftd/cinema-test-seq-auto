@@ -4,23 +4,24 @@ const { Model, Sequelize } = _sequelize;
 export default class Location extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    id: {
+    location_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    countryid: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'countries',
-        key: 'id'
-      }
+    title: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      unique: "locations_title_key"
     },
-    city: {
-      type: DataTypes.STRING(10),
-      allowNull: false
+    nationality_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'nationalities',
+        key: 'nationality_id'
+      }
     }
   }, {
     sequelize,
@@ -32,7 +33,14 @@ export default class Location extends Model {
         name: "locations_pkey",
         unique: true,
         fields: [
-          { name: "id" },
+          { name: "location_id" },
+        ]
+      },
+      {
+        name: "locations_title_key",
+        unique: true,
+        fields: [
+          { name: "title" },
         ]
       },
     ]

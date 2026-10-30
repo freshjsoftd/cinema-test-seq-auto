@@ -4,20 +4,20 @@ const { Model, Sequelize } = _sequelize;
 export default class MoviesDirector extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    directorid: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'directors',
-        key: 'id'
-      }
-    },
-    movieid: {
+    movie_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'movies',
-        key: 'id'
+        key: 'movie_id'
+      }
+    },
+    director_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'directors',
+        key: 'director_id'
       }
     }
   }, {

@@ -4,40 +4,39 @@ const { Model, Sequelize } = _sequelize;
 export default class Movie extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    id: {
+    movie_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     title: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      unique: "movies_title_key"
+      type: DataTypes.STRING(100),
+      allowNull: false
     },
-    year: {
+    release_year: {
       type: DataTypes.DATEONLY,
       allowNull: true
     },
-    poster: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-    genreid: {
+    genre_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'genres',
-        key: 'id'
+        key: 'genre_id'
       }
     },
-    studioid: {
+    studio_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'studios',
-        key: 'id'
+        key: 'studio_id'
       }
+    },
+    poster: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   }, {
     sequelize,
@@ -49,14 +48,7 @@ export default class Movie extends Model {
         name: "movies_pkey",
         unique: true,
         fields: [
-          { name: "id" },
-        ]
-      },
-      {
-        name: "movies_title_key",
-        unique: true,
-        fields: [
-          { name: "title" },
+          { name: "movie_id" },
         ]
       },
     ]
