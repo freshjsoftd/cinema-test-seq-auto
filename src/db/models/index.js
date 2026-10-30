@@ -1,9 +1,9 @@
 import Sequelize from 'sequelize';
-import configByEnvironment from '../../config/postgresConfig.js';
+import configByEnv from '../../config/postgresConfig.js';
 import initModels from './init-models.js';
 
-const environment = process.env.NODE_ENV || 'development';
-const config = configByEnvironment[environment];
+const env = process.env.NODE_ENV || 'development';
+const config = configByEnv[env];
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 const db = initModels(sequelize);
 
