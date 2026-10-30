@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "db:migrate": "sequelize-cli --config src/config/postgresConfig.js --migrations-path src/db/migrations --models-path src/db/models --seeders-path src/db/seeders db:migrate",
+    "db:migrate:undo": "sequelize-cli --config src/config/postgresConfig.js --migrations-path src/db/migrations --models-path src/db/models --seeders-path src/db/seeders db:migrate:undo",
     "init-db": "npx dotenv-cli -- bash -c 'npx sequelize-auto -h \"$DB_PG_HOST\" -p \"$DB_PG_PORT\" -d \"$DB_PG_NAME\" -u \"$DB_PG_USER\" -x \"$DB_PG_PWD\" -e postgres --cm p -l esm --sg true -o ./src/db/models'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "dotenv": "^18.0.9",
     "pg": "^8.23.1",
@@ -20,6 +23,7 @@
   },
   "devDependencies": {
     "dotenv-cli": "^11.0.0",
+    "nodemon": "^3.1.14",
     "sequelize-cli": "^6.6.5"
   }
 }
