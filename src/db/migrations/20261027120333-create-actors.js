@@ -2,21 +2,9 @@
 
 import db from '../models/index.js';
 
-console.log(db)
+// console.log(db)
 const models = Object.keys(db.sequelize.models);
-// const models = [
-//   'actor',
-//   'country',
-//   'director',
-//   'genre',
-//   'location',
-//   'movie',
-//   'movies_actor',
-//   'movies_director',
-//   'studio',
-// ]
-
-console.log(models)
+// console.log(models)
 /** @type {import('sequelize-cli').Migration} */
 export default {
 	async up(queryInterface, Sequelize) {
