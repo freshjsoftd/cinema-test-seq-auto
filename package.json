@@ -6,10 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "dbDrop": "npx sequelize-cli --config ./src/config/postgresConfig.js --migrations-path ./src/db/migrations --models-path ./src/db/models --seeders-path ./src/db/seeders db:drop",
-    "dbCreate": "npx sequelize-cli  --config ./src/config/postgresConfig.js --migrations-path ./src/db/migrations --models-path ./src/db/models --seeders-path ./src/db/seeders db:create ",
+    "db:drop": "npx sequelize-cli --config ./src/config/postgresConfig.js --migrations-path ./src/db/migrations --models-path ./src/db/models --seeders-path ./src/db/seeders db:drop",
+    "db:create": "npx sequelize-cli  --config ./src/config/postgresConfig.js --migrations-path ./src/db/migrations --models-path ./src/db/models --seeders-path ./src/db/seeders db:create ",
     "db:migrate": "npx sequelize-cli --config ./src/config/postgresConfig.js --migrations-path ./src/db/migrations --models-path ./src/db/models --seeders-path ./src/db/seeders db:migrate",
     "db:migrate:undo": "npx sequelize-cli --config src/config/postgresConfig.js --migrations-path src/db/migrations --models-path src/db/models --seeders-path src/db/seeders db:migrate:undo",
+    "seed:all": "npx sequelize-cli --config ./src/config/postgresConfig.js --migrations-path ./src/db/migrations --models-path ./src/db/models --seeders-path ./src/db/seeders db:seed:all",
+    "seed:all:indo": "npx sequelize-cli --config ./src/config/postgresConfig.js --migrations-path ./src/db/migrations --models-path ./src/db/models --seeders-path ./src/db/seeders db:seed:undo:all",
     "init-db": "npx dotenv-cli -- bash -c 'npx sequelize-auto -h \"$DB_PG_HOST\" -p \"$DB_PG_PORT\" -d \"$DB_PG_NAME\" -u \"$DB_PG_USER\" -x \"$DB_PG_PWD\" -e postgres --cm p -l esm --sg true -o ./src/db/models'"
   },
   "keywords": [],

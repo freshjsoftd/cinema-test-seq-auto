@@ -8,9 +8,9 @@ import {models} from '../../constants/index.js'
 export default {
 	async up(queryInterface, Sequelize) {
 		for (let modelName of models) {
-      console.log(modelName)
+			console.log(modelName);
 			const model = db[modelName];
-      console.log(model)
+			console.log(model);
 			const attributes = { ...model.getAttributes() };
 			const associations = model.associations;
 			Object.values(associations).forEach((association) => {
