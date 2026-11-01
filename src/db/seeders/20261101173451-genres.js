@@ -11,17 +11,6 @@ import { genres } from '../../constants/index.js';
 // import {movies_directors} from '../../constants/index.js';
 // import {models} from '../../constants/index.js';
 
-// const seedData = {
-//   genres,
-//   nationalities,
-//   locations,
-//   studios,
-//   movies,
-//   actors,
-//   directors,
-//   movies_actors,
-//   movies_directors,
-// };
 
 /** @type {import('sequelize-cli').Migration} */
 export default {
