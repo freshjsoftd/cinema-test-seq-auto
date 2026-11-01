@@ -1,18 +1,24 @@
-import db from './src/db/models/index.js';
-import Actors from './src/db/models/actor.js';
 import Serializer from 'sequelize-to-json';
+import db from './src/db/models/index.js';
+import { models } from './src/constants/index.js';
 
-const models = Object.keys(db.sequelize.models);
-console.log(models);
+// const models = Object.keys(db.sequelize.models);
+// console.log(models);
+ 
 
-async function sync() {
-	
-		await db.MoviesDirector.sync({ alter: true });
-	
-	console.log('All models were synchronized successfully.');
+function sync(arr) {
+	arr.forEach(async (model) => {
+		try {
+			await db[model].sync();
+			console.log(`${model} was synchronized successfully.`);
+		} catch (error) {
+			console.log(error);
+		}
+	});
 }
 
-// sync()
+
+sync(models)
 
 async function getAllActors() {
 	try {

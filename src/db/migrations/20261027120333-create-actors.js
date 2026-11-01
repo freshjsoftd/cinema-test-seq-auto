@@ -2,15 +2,14 @@
 
 import db from '../models/index.js';
 
-// console.log(db)
-const models = Object.keys(db.sequelize.models);
-// console.log(models)
+import {models} from '../../constants/index.js'
+
 /** @type {import('sequelize-cli').Migration} */
 export default {
 	async up(queryInterface, Sequelize) {
-		for (let mName of models) {
-      console.log(mName)
-			const model = db[mName];
+		for (let modelName of models) {
+      console.log(modelName)
+			const model = db[modelName];
       console.log(model)
 			const attributes = { ...model.getAttributes() };
 			const associations = model.associations;
@@ -24,13 +23,13 @@ export default {
 				}
 			});
 
-			await queryInterface.createTable(model.tableName, {});
+			await queryInterface.createTable(model.tableName, attributes);
 		}
 	},
 
 	async down(queryInterface, Sequelize) {
-		for (let mName of models.toReversed()) {
-			const model = db[mName];
+		for (let modelName of models.toReversed()) {
+			const model = db[modelName];
 			await queryInterface.dropTable(model.tableName);
 		}
 	},
