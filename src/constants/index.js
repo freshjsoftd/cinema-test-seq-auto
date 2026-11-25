@@ -1,5 +1,8 @@
 'use strict';
 
+// The order of models is very important
+// So I create it manualy
+// won't break it
 export const models = [
 	'Genre',
 	'Nationality',

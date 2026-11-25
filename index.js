@@ -18,7 +18,7 @@ function sync(arr) {
 }
 
 
-sync(models)
+// sync(models)
 
 async function getAllActors() {
 	try {
